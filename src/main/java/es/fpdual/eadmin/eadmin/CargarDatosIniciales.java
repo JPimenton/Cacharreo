@@ -8,26 +8,25 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import es.fpdual.eadmin.eadmin.modelo.Documento;
-import es.fpdual.eadmin.eadmin.modelo.EstadoDocumento;
 import es.fpdual.eadmin.eadmin.modelo.TablaModulos;
-import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
+import es.fpdual.eadmin.eadmin.repositorio.RepositorioModulos;
+import es.fpdual.eadmin.eadmin.servicio.ServicioModulos;
 
 @Component
 public class CargarDatosIniciales implements ApplicationRunner {
 
-	private final RepositorioDocumento repositorioDocumento;
+	private final ServicioModulos servicioModulo;
 	
 	private static final Date FECHA = new Date();
 	
 	@Autowired
-	public CargarDatosIniciales(RepositorioDocumento repositorioDocumento) {
-		this.repositorioDocumento =repositorioDocumento;
+	public CargarDatosIniciales(ServicioModulos servicioModulo) {
+		this.servicioModulo =servicioModulo;
 	}
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		List<TablaModulos> list = this.repositorioDocumento.obtenerTodosLosDocumentos();
+		List<TablaModulos> list = this.servicioModulo.obtenerTodosLosDocumentos();
 		System.out.println(list.size());
 		System.out.println(list.get(0));
 	}
