@@ -13,17 +13,26 @@ import es.fpdual.eadmin.eadmin.servicio.ServicioModulos;
 @Service
 public class ServicioModulosImpl implements ServicioModulos {
 
-	RepositorioModulos repositorioDocumento;
+	RepositorioModulos repositorioModulos;
 	
 	@Autowired
-	public ServicioModulosImpl (RepositorioModulos repositorioDocumento) {
-		this.repositorioDocumento = repositorioDocumento;
+	public ServicioModulosImpl (RepositorioModulos repositorioModulos) {
+		this.repositorioModulos = repositorioModulos;
 	}
 	
 	
 	@Override
-	public List<TablaModulos> obtenerTodosLosDocumentos() {
-		return repositorioDocumento.obtenerTodosLosDocumentos();
+	public List<TablaModulos> consultarTodosLosRegistrosDeLaTablaModulos() {
+		return repositorioModulos.consultarTodosLosRegistrosDeLaTablaModulos();
+	}
+
+	public List<TablaModulos> consultarRegistrosDeLaTablaModulosPorIdModulo(Integer idModulo) {
+		return this.repositorioModulos.consultarRegistrosDeLaTablaModulosPorIdModulo(idModulo);
+	}
+	
+	@Override
+	public void modificarRegistroDeLaTablaModulos(TablaModulos registro) {
+		this.repositorioModulos.modificarRegistroDeLaTablaModulos(registro);;		
 	}
 
 }

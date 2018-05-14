@@ -1,0 +1,14 @@
+package es.fpdual.eadmin.eadmin.repositorio;
+
+import java.util.List;
+
+import  es.fpdual.eadmin.eadmin.modelo.TablaActividadesFormativas;
+
+public interface RepositorioActividadesFormativas {
+	List<TablaActividadesFormativas> consultarTodosLosRegistrosDeLaTablaActividadesFormativas();
+	List<TablaActividadesFormativas> consultarRegistrosDeLaTablaActividadesFormativasPorIdActividadEmpresaEIdBloque(Integer idActividad, String Empresa,Integer idBloque);
+	List<TablaActividadesFormativas> consultarRegistrosDeLaTablaActividadesFormativasPorEmpresaEIdBloque( String Empresa,Integer idBloque);
+	List<TablaActividadesFormativas> consultarRegistrosDeLaTablaActividadesFormativasPorIdActividadEmpresaEIdBloqueViaFormadores( Integer idFormador);
+
+	void modificarRegistroDeLaTablaActividadesFormativas(TablaActividadesFormativas registro);
+}

@@ -20,8 +20,18 @@ public class RepositorioModulosImpl implements RepositorioModulos {
     }
 
     @Override
-    public List<TablaModulos> obtenerTodosLosDocumentos() {
-        return this.mapper.seleccionarTodosLosDocumentos();
+    public List<TablaModulos> consultarTodosLosRegistrosDeLaTablaModulos() {
+        return this.mapper.consultarTodosLosRegistrosDeLaTablaModulos();
     }
 
+    @Override
+	public List<TablaModulos> consultarRegistrosDeLaTablaModulosPorIdModulo(Integer idModulo) {
+		return this.mapper.consultarRegistrosDeLaTablaModulosPorIdModulo(idModulo);
+	}
+
+	@Override
+	public void modificarRegistroDeLaTablaModulos(TablaModulos registro) {
+		this.mapper.modificarRegistroDeLaTablaModulos(registro);
+		
+	}
 }

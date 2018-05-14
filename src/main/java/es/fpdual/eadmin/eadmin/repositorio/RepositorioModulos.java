@@ -7,6 +7,10 @@ import es.fpdual.eadmin.eadmin.modelo.TablaModulos;
 public interface RepositorioModulos {
 
 
-	public abstract List<TablaModulos> obtenerTodosLosDocumentos();
+	List<TablaModulos> consultarTodosLosRegistrosDeLaTablaModulos();
+	
+	List<TablaModulos> consultarRegistrosDeLaTablaModulosPorIdModulo(Integer idModulo);
+	
+	void modificarRegistroDeLaTablaModulos(TablaModulos registro);
 	
 }

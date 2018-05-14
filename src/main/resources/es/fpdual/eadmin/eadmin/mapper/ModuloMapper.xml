@@ -2,19 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="es.fpdual.eadmin.eadmin.mapper.ModuloMapper">
 
-    
-  
-    <select id="seleccionarTodosLosDocumentos" resultMap="documentoResultMap">
-        <include refid="baseSelectDocumento"/>
-    </select>
-    
-    <sql id="baseSelectDocumento">
-        SELECT *
-        FROM Modulos
-        WHERE 1 = 1 
-    </sql>
-    
-    <resultMap id="documentoResultMap" type="es.fpdual.eadmin.eadmin.modelo.TablaModulos">
+	<update id="modificarRegistroDeLaTablaModulos">
+		UPDATE MODULO
+		SET NOMBRE = #{modulo.nombre},
+			DURACION = #{modulo.duracion},
+			CURSO = #{modulo.curso}
+		WHERE ID_MODULO = #{modulo.idModulo} 
+	</update>
+	<!-- General -->
+	<sql id="baseSelectDocumento">
+		SELECT * FROM MODULOS WHERE 1=1
+	</sql>
+
+	<select id="consultarTodosLosRegistrosDeLaTablaModulos" resultMap="crearRegistro">
+		<include refid="baseSelectDocumento"/>
+	</select>
+	
+	<!-- Para acceso por la tabla Resultados_Aprendizaje, tambien para Bloques y para Modificacion -->
+	<select id="consultarRegistrosDeLaTablaModulosPorIdModulo" resultMap="crearRegistro">
+		<include refid="baseSelectDocumento"/>AND ID_MODULO=#{idModulo}
+
+	</select>
+
+	<resultMap id="crearRegistro" type="es.fpdual.eadmin.eadmin.modelo.TablaModulos">
 		<constructor>
 			<idArg column="ID_MODULO" javaType="Integer" />
 			<arg column="NOMBRE" javaType="String" />
@@ -22,5 +32,6 @@
 			<arg column="CURSO" javaType="String" />
 		</constructor>
 	</resultMap>
+
     
 </mapper>

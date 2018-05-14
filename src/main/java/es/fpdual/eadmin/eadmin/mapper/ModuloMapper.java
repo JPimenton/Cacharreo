@@ -8,6 +8,10 @@ import es.fpdual.eadmin.eadmin.modelo.*;
 
 public interface ModuloMapper {
 
-    List<TablaModulos> seleccionarTodosLosDocumentos();
+	public int modificarRegistroDeLaTablaModulos(@Param("modulo")TablaModulos registro);	
+	
+	public List<TablaModulos> consultarTodosLosRegistrosDeLaTablaModulos();
+
+	public List<TablaModulos> consultarRegistrosDeLaTablaModulosPorIdModulo(@Param("idModulo")Integer idModulo) ;
 
 }
